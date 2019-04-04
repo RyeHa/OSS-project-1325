@@ -1,19 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#define MAX 2048
 
 int reverse_digits(int number);
 
 int reverse_digits(int number) {
-  
-    char * arr = (char *) malloc(MAX), * curr = arr;
-      sprintf(arr, "%d", number);
-    do {
-        *curr++ = number % 10;
-        number /= 10;
-    } while (number != 0);
+  int r = 0;     //where get the reversed number
+  int n = number;// deposit number to n
 
-    int num = atoi(curr);
-    return num;
+  while(n) {  //repeat until n become 0
+     r = (r * 10) + (n % 10);   //make r multiplied, and deposit the rest of n/10
+     n = n / 10; //devide n at decimal counts
+  }
+
+  return r;  //return the deposited number
 }
+
