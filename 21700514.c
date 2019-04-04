@@ -3,28 +3,28 @@
 #include <stdlib.h>
 #define MAX 2048
 
-//char * convertNumberIntoArray(int n);
 
+int* binarize(int n);
 int sort_digits(int n);
 int ppow(int a, int b);
+int a();
 
 int sort_digits(int n){
-  int* array;             //make integer pointer array
-  array=malloc(MAX*1000); //memory allocation to array
-  int n2 = n;             //deposit n to n2
+  int* array;
+  array=malloc(MAX*1000);
+  int n2 = n;
   int num= 0;
-  while (n2>0) {   //until n2 become 0
+  while (n2>0) {
     num++;
     n2/=10;
   }
 
-  for(int i=0;i<num;i++){ 
-    array[i]=n%10;   //deposit the rest of n/10 to array 
+  for(int i=0;i<num;i++){
+    array[i]=n%10;
     n=n/10;
   }
 
-  // selection sort fuction
-  for(int i = 0; i < num; ++i){   
+  for(int i = 0; i < num; ++i){
     for(int j = i + 1; j < num; ++j){
       if(array[i] > array[j]){
         int tmp = array[i];
@@ -36,7 +36,7 @@ int sort_digits(int n){
 
 int sum=0;
 int pppow=0;
-for(int i = 0; i < num; i++){    //get the powered number
+for(int i = 0; i < num; i++){
   pppow=ppow(10,num-i-1);
    sum = sum + array[i]*pppow;
  }
@@ -48,6 +48,41 @@ int ppow(int a, int b){
 
  int i, ppow = 1;
  for (i = 0; i < b; i++)
-  ppow *= a;       //multiply ppow with the value of a
+  ppow *= a;
  return ppow;
+}
+
+int count=0;
+
+int* binarize(int n){
+  int number, binary, i=0;
+  int* bin;
+  int* sum;
+  bin = (int*)malloc(MAX);
+  sum = (int*)malloc(MAX);
+  int x=0;
+  number=n;
+  while(number>0){
+    binary=number%2;
+    bin[i]=binary;
+    number=number/2;
+    i+=1;
+    }
+    count=i-1;
+     int j=0;
+    for(i=count; i>=0; i--){
+    sum[j]=bin[i];
+    j++;
+    }
+
+    // for(i=0;i<=count;i++){
+    //   printf("%d", sum[i]);
+    // }
+
+    return sum;
+}
+
+int a(){
+  int con = count;
+  return con;
 }
